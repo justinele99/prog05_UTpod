@@ -24,18 +24,14 @@ int main(int argc, char *argv[])
     UtPod t;
 
     Song s1("Beatles", "Hey Jude1", 4);
-
     int result = t.addSong(s1);
-
-    cout << "result = " << result << endl;
-
-    t.showSongList();
+    int result2 = t.getRemainingMemory();
+    cout << "result = " << result << " result2 = " << result2 << endl;
 
     Song s2("Beatles", "Hey Jude2", 5);
     result = t.addSong(s2);
-    cout << "result = " << result << endl;
-
-    t.showSongList();
+    result2 = t.getRemainingMemory();
+    cout << "result = " << result << " result2 = " << result2 << endl;
 
     Song s3("Beatles", "Hey Jude3", 6);
     result = t.addSong(s3);
@@ -49,31 +45,28 @@ int main(int argc, char *argv[])
     result = t.addSong(s5);
     cout << "add result = " << result << endl;
 
-    t.showSongList();
-
-    result = t.removeSong(s2);
-    cout << "delete result = " << result << endl;
-
-    result = t.removeSong(s3);
-    cout << "delete result = " << result << endl;
-
-    t.showSongList();
-
-    result = t.removeSong(s1);
-    cout << "delete result = " << result << endl;
-
-    result = t.removeSong(s5);
-    cout << "delete result = " << result << endl;
-
-    result = t.removeSong(s4);
-    cout << "delete result = " << result << endl;
-
-    t.showSongList();
-
-    result = t.addSong(s5);
+    Song s6("The Misfits", "Last Caress", 5);
+    result = t.addSong(s6);
     cout << "add result = " << result << endl;
 
+    Song s7("The Replacements", "Androgynous", 2);
+    result = t.addSong(s7);
+    cout << "add result = " << result << endl;
+
+    Song s8("Vashti Bunyan", "Train Song", 19);
+    result = t.addSong(s8);
+    cout << "add result = " << result << endl;
+
+    Song s9("Glinksadg", "fjfjfjf", 5);
+    result = t.addSong(s9);
+    cout << "add result = " << result << endl;
+
+    printf("\n----------------\n");
     t.showSongList();
-    cout << "memory = " << t.getRemainingMemory() << endl;
+    printf("\n----------------\n");
+
+    t.sortSongList();
+    t.showSongList();
+    printf("\n----------------\n");
 
 }

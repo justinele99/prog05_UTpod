@@ -11,13 +11,13 @@ Song::Song() {
     artist = "";
     size = 1;
 }
-Song::Song(string inTitle, string inArtist, int inSize) {
-    title = inTitle;
-    artist = inArtist;
-    if(inSize > 0)
-        size = inSize;
+Song::Song(string title, string artist, int size) {
+    this->title = title;
+    this->artist = artist;
+    if(size > 0)
+        this->size = size;
     else
-        size = 1;
+        this->size = 1;
 }
 void Song::swap(Song &p) {
 
