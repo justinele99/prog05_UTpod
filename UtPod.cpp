@@ -58,9 +58,6 @@ int UtPod::removeSong(Song const &s) {
     }
     return NO_MEMORY;
 }
-void UtPod::shuffle() {
-
-}
 void UtPod::showSongList() {
     SongNode *p = songs;
     while(p != NULL) {
@@ -70,19 +67,30 @@ void UtPod::showSongList() {
 }
 void UtPod::sortSongList() {
 
+    if(getTotalMemory() == -2) {
+        //printf("less than 2 songs\n");
+        return;
+    }
+
     SongNode *head = songs;
     while(head != NULL) {
-        SongNode *temp = head->next;
         Song temp2 = head->s;
+        SongNode *smallest = head;
+        SongNode *temp = head->next;
         while(temp != NULL) {
             if(temp2 > temp->s) {
+                smallest = temp;
                 temp2 = temp->s;
             }
             temp = temp->next;
         }
-        head->s.swap(temp2);
+        head->s.swap(smallest->s);
         head = head->next;
     }
+}
+void UtPod::shuffle() {
+
+
 }
 void UtPod::clearMemory() {
 

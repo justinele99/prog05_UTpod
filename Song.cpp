@@ -11,7 +11,7 @@ Song::Song() {
     artist = "";
     size = 1;
 }
-Song::Song(string title, string artist, int size) {
+Song::Song(string artist, string title, int size) {
     this->title = title;
     this->artist = artist;
     if(size > 0)
@@ -22,36 +22,32 @@ Song::Song(string title, string artist, int size) {
 void Song::swap(Song &p) {
 
     Song temp = p;
-    p.title = title;
-    p.artist = artist;
-    p.size = size;
-    title = temp.title;
-    artist = temp.artist;
-    size = temp.size;
+    p = *this;
+    *this = temp;
 }
 bool Song::operator  >(Song const &rhs) {
 
-    if(getArtist() > rhs.getArtist())
+    if(artist > rhs.artist)
         return true;
-    if(getArtist() < rhs.getArtist())
+    if(artist < rhs.artist)
         return false;
-    if(getTitle() > rhs.getTitle())
+    if(title > rhs.title)
         return true;
-    if(getTitle() < rhs.getTitle())
+    if(title < rhs.title)
         return false;
-    return getSize() > rhs.getSize();
+    return size > rhs.size;
 }
 bool Song::operator  <(Song const &rhs) {
 
-    if(getArtist() < rhs.getArtist())
+    if(artist < rhs.artist)
         return true;
-    if(getArtist() > rhs.getArtist())
+    if(artist > rhs.artist)
         return false;
-    if(getTitle() < rhs.getTitle())
+    if(title < rhs.title)
         return true;
-    if(getTitle() > rhs.getTitle())
+    if(title > rhs.title)
         return false;
-    return getSize() < rhs.getSize();
+    return size < rhs.size;
 }
 bool Song::operator ==(Song const &rhs) {
 

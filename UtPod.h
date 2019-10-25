@@ -75,19 +75,20 @@ class UtPod {
 
       /* FUNCTION - void clearMemory
        * clears all the songs from memory
-         input parms -
-         output parms -
       */
       void clearMemory();
 
       /* FUNCTION - int getTotalMemory
        *  returns the total amount of memory in the UtPod
           o will do nothing if there are less than two songs in the current list
-         input parms -
-         output parms -
+         output parms - int remaining memory
       */
       int getTotalMemory() {
-         return memSize;
+          if(songs != NULL) {
+            if(songs->next != NULL)
+                return memSize;
+          }
+          return NOT_FOUND;
       }
 
       /* FUNCTION - int getRemainingMemory

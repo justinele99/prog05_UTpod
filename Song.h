@@ -16,7 +16,7 @@ class Song {
 
     public:
         Song();
-        Song(string inTitle, string inArtist, int inSize);
+        Song(string artist, string title, int size);
 
         string getTitle() const
         {   return title;   }
@@ -31,9 +31,6 @@ class Song {
         bool operator  <(Song const &rhs);
         bool operator ==(Song const &rhs);
 
-        ~Song() {
-
-        }
 };
 
 ostream& operator << (ostream& out, const Song &s);
