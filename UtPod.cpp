@@ -4,12 +4,15 @@
 #include "UtPod.h"
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 
 UtPod::UtPod() {
     memSize = MAX_MEMORY;
     songs = NULL;
     numSongs = 0;
+    unsigned int currentTime =  (unsigned)time(0);
+    srand(currentTime);
 }
 UtPod::UtPod(int size) {
     if (size > MAX_MEMORY || size <= 0)
@@ -18,6 +21,8 @@ UtPod::UtPod(int size) {
         memSize = size;
     songs = NULL;
     numSongs = 0;
+    unsigned int currentTime =  (unsigned)time(0);
+    srand(currentTime);
 }
 int UtPod::addSong(Song const &s) {
 
@@ -67,7 +72,7 @@ void UtPod::showSongList() {
 }
 void UtPod::sortSongList() {
 
-    if(getTotalMemory() == -2) {
+    if(getTotalMemory() == NOT_FOUND) {
         //printf("less than 2 songs\n");
         return;
     }
@@ -90,7 +95,52 @@ void UtPod::sortSongList() {
 }
 void UtPod::shuffle() {
 
+    if(getTotalMemory() == NOT_FOUND) {
+        //printf("less than 2 songs\n");
+        return;
+    }
 
+    for(int numShuffles = 0; numShuffles < (this->getNumSongs())*100; numShuffles++) {
+
+        time_t timer = time(NULL);
+
+        int song1_Index = rand() % (this->getNumSongs()+1);
+        int song2_Index = rand() % (this->getNumSongs()+1);
+        if(song1_Index == song2_Index){
+            song1_Index++;
+        }
+
+        SongNode *song1 = songs; // song1 is first in list
+        SongNode *song2 = songs;
+
+        //making song1 point to first song to swtich
+        for(int i =0; i < song1_Index; i++){
+            if(song1->next != NULL) {
+                song1 = song1->next;
+            }
+        }
+        // making song2 point to second song to switch
+        for (int j = 0; j < song2_Index; j++) {
+            if(song2->next != NULL) {
+                song2 = song2->next;
+            }
+        }
+
+        // swapping songs
+        song1->s.swap(song2->s);
+
+    }
+}
+int UtPod::getNumSongs() {
+
+    int numSongs = 0;
+    SongNode *temp = songs;
+    while(temp->next != NULL){
+        numSongs++;
+        temp = temp->next;
+    }
+    numSongs++;
+    return numSongs;
 }
 void UtPod::clearMemory() {
 

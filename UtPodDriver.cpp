@@ -38,9 +38,15 @@ int main(int argc, char *argv[])
 
     printf("----------------\n");
     t.showSongList();
+    t.shuffle();
     printf("----------------\n");
+    t.showSongList();
     t.sortSongList();
     printf("----------------\n");
     t.showSongList();
+    t.shuffle();
+    printf("----------------\n");
+    t.showSongList();
+    t.sortSongList();
 
 }

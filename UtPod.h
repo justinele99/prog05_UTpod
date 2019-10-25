@@ -18,6 +18,7 @@ class UtPod {
       
       SongNode *songs{};  //the head pointer
       int memSize;
+      int getNumSongs();
    
    public:
       //Default constructor
@@ -36,8 +37,8 @@ class UtPod {
            o returns a 0 if successful
            o returns -1 if not enough memory to add the song
        precondition: s is a valid Song
-       input parms -
-       output parms -
+       input parms - song object
+       output parms - int indicator of success
       */
       int addSong(Song const &s);
 
@@ -46,16 +47,14 @@ class UtPod {
        * removes the first instance of a song that is in the the UtPod multiple times
            o returns 0 if successful
            o returns -1 if nothing is removed
-         input parms -
-         output parms -
+         input parms - song object
+         output parms - int indicator of success
       */
       int removeSong(Song const &s);
 
       /* FUNCTION - void shuffle
        *  shuffles the songs into random order
           o will do nothing if there are less than two songs in the current list
-         input parms -
-         output parms -
       */
       void shuffle();
 
@@ -68,8 +67,6 @@ class UtPod {
       /* FUNCTION - void sortSongList
        *  sorts the songs in ascending order
           o will do nothing if there are less than two songs in the current list
-         input parms -
-         output parms -
       */
       void sortSongList();
 
@@ -93,8 +90,7 @@ class UtPod {
 
       /* FUNCTION - int getRemainingMemory
        *  returns the amount of memory available for adding new songs
-         input parms -
-         output parms -
+         output parms - remaining memory
       */
       int getRemainingMemory();
 
